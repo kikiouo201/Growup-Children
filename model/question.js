@@ -25,6 +25,22 @@ function showChild(child_key,callback){
     connectServer.sendToServer(SHOW_CHILD,jsonObject,callback);
 }
 
+const SHOW_QUIZ_CONTENT = 'show_quiz_content';
+function showQuizContent(quiz_record_id,callback){
+    const jsonObject = {
+        quiz_record_id: quiz_record_id,
+    };
+    connectServer.sendToServer(SHOW_QUIZ_CONTENT,jsonObject,callback);
+}
+
+const SHOW_QUIZ_RECORD = 'show_quiz_record';
+function showQuizRecord(child_id,callback){
+    const jsonObject = {
+        child_id: child_id,
+    };
+    connectServer.sendToServer(SHOW_QUIZ_RECORD,jsonObject,callback);
+}
+
 
 function addQa(child_id, question_text, answer, question_url, category,callback){
     const jsonObject = {
@@ -157,5 +173,7 @@ module.exports={
     showBookContent,
     alterBookContent,
     showChild,
+    showQuizContent,
+    showQuizRecord,
     
 }
