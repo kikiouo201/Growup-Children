@@ -16,6 +16,7 @@ const ALTER_BOOK_CONTENT = 'alter_book_content';
 const SHOW_BOOK_CONTENT = 'show_book_content';
 const DELETE_BOOK_CONTENT = 'delete_book_content';
 
+
 const SHOW_CHILD = 'show_child_key';
 
 function showChild(child_key,callback){
@@ -23,6 +24,19 @@ function showChild(child_key,callback){
        child_key: child_key,
     };
     connectServer.sendToServer(SHOW_CHILD,jsonObject,callback);
+}
+
+const ADD_QUIZ_RECORD = 'add_quiz_record';
+
+function addQuizRecord(child_id,name,amount,correct_amount,callback){
+    const jsonObject = {
+        child_id: child_id,
+        total_time: 10,
+        name: name,
+        amount: amount,
+        correct_amount: correct_amount,
+    };
+    connectServer.sendToServer(ADD_QUIZ_RECORD,jsonObject,callback);
 }
 
 const SHOW_QUIZ_CONTENT = 'show_quiz_content';
@@ -175,5 +189,6 @@ module.exports={
     showChild,
     showQuizContent,
     showQuizRecord,
+    addQuizRecord,
     
 }
