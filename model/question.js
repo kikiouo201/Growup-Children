@@ -16,6 +16,15 @@ const ALTER_BOOK_CONTENT = 'alter_book_content';
 const SHOW_BOOK_CONTENT = 'show_book_content';
 const DELETE_BOOK_CONTENT = 'delete_book_content';
 
+const SHOW_CHILD = 'show_child_key';
+
+function showChild(child_key,callback){
+    const jsonObject = {
+       child_key: child_key,
+    };
+    connectServer.sendToServer(SHOW_CHILD,jsonObject,callback);
+}
+
 
 function addQa(child_id, question_text, answer, question_url, category,callback){
     const jsonObject = {
@@ -147,5 +156,6 @@ module.exports={
     deleteBookContent,
     showBookContent,
     alterBookContent,
+    showChild,
     
 }
