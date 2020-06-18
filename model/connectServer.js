@@ -1,7 +1,8 @@
 const WebSocket = require('ws');
 const util = require('util');
 //使用 WebSocket 的網址向 Server 開啟連結
-let ws = new WebSocket('ws://localhost:2000');
+//let ws = new WebSocket('ws://localhost:2000');
+let ws = new WebSocket('ws://growup.mcu.yokikiyo.space');
 
 const workQueue = [];
 //開啟後執行的動作，指定一個 function 會在連結 WebSocket 後執行
@@ -31,7 +32,9 @@ ws.onmessage = event => {
             console.log("yo");
             workQueue.splice(i,1);
             console.log(`YoworkQueue.length = ${workQueue.length}`);
+            if(workQueue.length > 0) sendMes();
         }
+
     }
     
 }
@@ -52,6 +55,7 @@ ws.onclose = () => {
 
 function sendToServer(event, content, callback) {
 
+
     let json = {};
     console.log(json);
     json.event = event;
@@ -62,8 +66,7 @@ function sendToServer(event, content, callback) {
         json: json,
         callback: callback,
     });
-
-
+   
 }
 
 function sendMes() {
@@ -75,6 +78,7 @@ function sendMes() {
 
     if (workQueue.length > 0) {
        workQueue.forEach(work => {
+        console.log("ws.send gogogo");
         ws.send(JSON.stringify(work.json));
        })
      
@@ -82,8 +86,9 @@ function sendMes() {
     return '';
 }
 
-
+let yo=10;
 module.exports = {
+    yo,
     sendToServer,
     onopen: ws.onopen,
     onclose: ws.onclose,

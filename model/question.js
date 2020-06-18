@@ -1,4 +1,5 @@
-const connectServer = require('./connectServer');
+const growupApi = require('./growupApi');
+
 
 const FAVORITE_QUESTION = 'favorite_question';
 
@@ -23,20 +24,36 @@ function showChild(child_key,callback){
     const jsonObject = {
        child_key: child_key,
     };
-    connectServer.sendToServer(SHOW_CHILD,jsonObject,callback);
+    growupApi.connectServer.sendToServer(SHOW_CHILD,jsonObject,callback);
 }
+
+const ADD_QUIZ = 'add_quiz';
+
+function addQuiz(book_id,callback){
+    const jsonObject = {
+        book_id: book_id,
+    };
+    console.log(`yo=${growupApi.connectServer.yo}`);
+    //console.log('growupApi.connectServer.yo='+growupApi);
+    growupApi.connectServer.sendToServer(ADD_QUIZ,jsonObject,callback);
+
+}
+
 
 const ADD_QUIZ_RECORD = 'add_quiz_record';
 
-function addQuizRecord(child_id,name,amount,correct_amount,callback){
+function addQuizRecord(child_id,name,amount,correct_amount,quiz,callback){
     const jsonObject = {
         child_id: child_id,
         total_time: 10,
         name: name,
         amount: amount,
         correct_amount: correct_amount,
+        quizs: quiz,
     };
-    connectServer.sendToServer(ADD_QUIZ_RECORD,jsonObject,callback);
+    console.log("now addQR place!")
+    growupApi.connectServer.sendToServer(ADD_QUIZ_RECORD,jsonObject,callback);
+   
 }
 
 const SHOW_QUIZ_CONTENT = 'show_quiz_content';
@@ -44,7 +61,7 @@ function showQuizContent(quiz_record_id,callback){
     const jsonObject = {
         quiz_record_id: quiz_record_id,
     };
-    connectServer.sendToServer(SHOW_QUIZ_CONTENT,jsonObject,callback);
+    growupApi.connectServer.sendToServer(SHOW_QUIZ_CONTENT,jsonObject,callback);
 }
 
 const SHOW_QUIZ_RECORD = 'show_quiz_record';
@@ -52,7 +69,7 @@ function showQuizRecord(child_id,callback){
     const jsonObject = {
         child_id: child_id,
     };
-    connectServer.sendToServer(SHOW_QUIZ_RECORD,jsonObject,callback);
+    growupApi.connectServer.sendToServer(SHOW_QUIZ_RECORD,jsonObject,callback);
 }
 
 
@@ -65,7 +82,7 @@ function addQa(child_id, question_text, answer, question_url, category,callback)
         category: category,
     };
     
-    connectServer.sendToServer(ADD_QA,jsonObject,callback);
+    growupApi.connectServer.sendToServer(ADD_QA,jsonObject,callback);
 }
 
 
@@ -75,7 +92,7 @@ function deletePastQuestion(book_content_id, callback){
         id: book_content_id,
     };
     
-    connectServer.sendToServer(DELETE_PAST_QUESTION,jsonObject,callback);
+    growupApi.connectServer.sendToServer(DELETE_PAST_QUESTION,jsonObject,callback);
 }
 
 function showPastQuestion(child_id, callback){
@@ -83,7 +100,7 @@ function showPastQuestion(child_id, callback){
         child_id: child_id,
     };
     
-    connectServer.sendToServer(SHOW_PAST_QUESTION,jsonObject,callback);
+    growupApi.connectServer.sendToServer(SHOW_PAST_QUESTION,jsonObject,callback);
 }
 
 function addBook(child_id, name, category, callback){
@@ -93,7 +110,7 @@ function addBook(child_id, name, category, callback){
         category:category,
     };
     
-    connectServer.sendToServer(ADD_BOOK,jsonObject,callback);
+    growupApi.connectServer.sendToServer(ADD_BOOK,jsonObject,callback);
 }
 
 function deleteBook(book_id, callback){
@@ -101,7 +118,7 @@ function deleteBook(book_id, callback){
         id: book_id,
     };
     
-    connectServer.sendToServer(DELETE_BOOK,jsonObject,callback);
+    growupApi.connectServer.sendToServer(DELETE_BOOK,jsonObject,callback);
 }
 
 function showBook(child_id, callback){
@@ -109,7 +126,7 @@ function showBook(child_id, callback){
         child_id: child_id,
     };
     
-    connectServer.sendToServer(SHOW_BOOK,jsonObject,callback);
+    growupApi.connectServer.sendToServer(SHOW_BOOK,jsonObject,callback);
 }
 
 function alterBook(book_id, name, category, callback){
@@ -123,7 +140,7 @@ function alterBook(book_id, name, category, callback){
         jsonObject.category = category;
     }
     
-    connectServer.sendToServer(ALTER_BOOK,jsonObject,callback);
+    growupApi.connectServer.sendToServer(ALTER_BOOK,jsonObject,callback);
 }
 
 
@@ -133,7 +150,7 @@ function addBookContent(book_id,qa_id,callback){
         book_id: book_id,
         qa_id: qa_id,
     };
-    connectServer.sendToServer(ADD_BOOK_CONTENT,jsonObject,callback);
+    growupApi.connectServer.sendToServer(ADD_BOOK_CONTENT,jsonObject,callback);
 
 }
 
@@ -142,7 +159,7 @@ function deleteBookContent(book_content_id, callback){
     const jsonObject = {
         id: book_content_id,
     };
-    connectServer.sendToServer(DELETE_BOOK_CONTENT,jsonObject,callback);
+    growupApi.connectServer.sendToServer(DELETE_BOOK_CONTENT,jsonObject,callback);
 
 }
 
@@ -153,7 +170,7 @@ function showBookContent(book_id,callback){
     const jsonObject = {
         id: book_id,
     };
-    connectServer.sendToServer(SHOW_BOOK_CONTENT,jsonObject,callback);
+    growupApi.connectServer.sendToServer(SHOW_BOOK_CONTENT,jsonObject,callback);
 
 }
 
@@ -169,7 +186,7 @@ function alterBookContent(id, book_id, qa_id, callback){
     if(qa_id != 0){
         jsonObject.qa_id = qa_id;
     }
-    connectServer.sendToServer(ALTER_BOOK_CONTENT,jsonObject,callback);
+    growupApi.connectServer.sendToServer(ALTER_BOOK_CONTENT,jsonObject,callback);
 
 }
 
@@ -190,5 +207,6 @@ module.exports={
     showQuizContent,
     showQuizRecord,
     addQuizRecord,
+    addQuiz,
     
 }
