@@ -1,4 +1,4 @@
-//const Question = require('./model/question');
+const Question = require('./model/question');
 const People = require('./model/people');
 
 //ADD
@@ -42,11 +42,11 @@ const People = require('./model/people');
 
 //SHOW
 
-// Question.showQuizContent(1, (event) => {
-//           const data = JSON.parse(JSON.stringify(event));
-//           const content = data.content;        
-//           console.log("showQuizContent =" + JSON.stringify(content)  );       
-// });
+Question.showQuizContent(1, (event) => {
+          const data = JSON.parse(JSON.stringify(event));
+          const content = data.content;        
+          console.log("showQuizContent =" + JSON.stringify(content)  );       
+});
 
 // Question.showQuizRecord(1, (event) => {
 //   const data = JSON.parse(JSON.stringify(event));

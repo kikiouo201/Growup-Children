@@ -13,20 +13,16 @@ const workQueues= new Map();
 const sendQueues = new Map();
 const app = {
     use(router) {
-        console.log("router.workQueues"+router);
+
       router.workQueues.forEach((event, callback) => {
         if (workQueues.has(event)) throw new Error('Regist duplicate event in this application.');
-       //console.log(event);
         workQueues.set(event, callback);
       });
       router.sendQueues.forEach((event, json) => {
         if (sendQueues.has(event)) throw new Error('Regist duplicate event in this application.');
-      console.log("sendQueues=");
-        console.log(event);
         sendQueues.set(event, json);
       });
     
-  
     },
   };
 
@@ -41,24 +37,10 @@ ws.onmessage = event => {
     console.log('onmessage');
 
     const data = JSON.parse(event.data);
-    console.log(data.event);
-    console.log(workQueues);
 
     const workQueu = workQueues.get(data.event);
     workQueu(data);
-    //console.log("data.event=");
-    //console.log(workQueues.get(data.event));
-
-    // for(let i=0 ;i<workQueues.size;i++){
-    //     if (workQueue[i].event == owo.event) {
-    //         workQueue[i].callback(owo);
-    //         console.log("yo");
-    //         workQueue.splice(i,1);
-    //         console.log(`YoworkQueue.length = ${workQueue.length}`);
-    //         if(workQueue.length > 0) sendMes();
-    //     }
-
-    // }
+    sendMes();
     
 }
 
@@ -70,14 +52,14 @@ ws.onclose = () => {
 
 function sendMes(){
 
-    console.log(`workQueue.length = ${workQueues.size}`);
+    console.log(`sendQueue.size = ${sendQueues.size}`);
 
     if (sendQueues.size > 0) {
        sendQueues.forEach((event, json)  => {
-           const str=JSON.stringify(json);
-           console.log("str"+str);
-        ws.send(str);
-       })
+            ws.send(JSON.stringify(json));
+            sendQueues.delete(json);
+
+       });
      
     }
     return '';
@@ -107,10 +89,10 @@ Exsocket.createRouter = () => {
           
       );
       sendQueues.set(
-          event,
-          json,
+        event, 
+        json,
+         
       );
-      console.log("createRouter=");
       console.log(sendQueues);
     },
     workQueues,

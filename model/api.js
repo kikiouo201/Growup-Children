@@ -1,4 +1,3 @@
-const People = require('./people');
 const exsocket= require('../wrapper/Exsocket');
 const app=exsocket();
 

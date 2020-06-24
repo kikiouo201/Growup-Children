@@ -13,8 +13,8 @@ let open = 0;
 ws.onopen = (req) => {
 
     console.log('open connection');
-  //  ws.send( sendMes());
-  sendMes();
+
+    sendMes();
 }
 //接收 Server 發送的訊息
 ws.onmessage = event => {
@@ -57,7 +57,6 @@ function sendToServer(event, content, callback) {
 
 
     let json = {};
-    console.log(json);
     json.event = event;
     json.content = content;
 
@@ -78,7 +77,7 @@ function sendMes() {
 
     if (workQueue.length > 0) {
        workQueue.forEach(work => {
-        console.log("ws.send gogogo");
+           
         ws.send(JSON.stringify(work.json));
        })
      
