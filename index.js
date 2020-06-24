@@ -1,7 +1,32 @@
-const Question = require('./model/question');
-
+//const Question = require('./model/question');
+const People = require('./model/people');
 
 //ADD
+
+
+
+
+// Question.addQuiz(5, (event) => {
+//    // console.log("addQuiz=" + JSON.stringify(event));
+//     const data = JSON.parse(JSON.stringify(event));
+//     const contents = data.content;        
+//     contents.forEach(content => {
+//       content.choose = content.options2;
+//     });
+//     console.log("contents=" + JSON.stringify(contents));
+//    conten = contents;
+//    Question.addQuizRecord(1,"水果類測驗1",10,3,conten,(event) => {
+//     console.log("addQuizRecord=" + JSON.stringify(event));
+//   });  
+// });
+
+
+
+
+// Question.addQuizRecord(1,"yo",10,3, (event) => {
+//     console.log("addQuizRecord=" + JSON.stringify(event));
+// });
+  
 // Question.addQa(1, "question_text", "answer", "question_url", "知識", (event) => {
 //     console.log("callback=" + JSON.stringify(event));
 // });
@@ -16,6 +41,29 @@ const Question = require('./model/question');
 
 
 //SHOW
+
+// Question.showQuizContent(1, (event) => {
+//           const data = JSON.parse(JSON.stringify(event));
+//           const content = data.content;        
+//           console.log("showQuizContent =" + JSON.stringify(content)  );       
+// });
+
+// Question.showQuizRecord(1, (event) => {
+//   const data = JSON.parse(JSON.stringify(event));
+//   const content = data.content;
+  
+//     console.log("showQuizRecord =" + JSON.stringify(content)  );
+    
+// });
+
+People.showChild('2nih42h3nn7k57nbu33', (event) => {
+      const data = JSON.parse(JSON.stringify(event));
+      const content = data.content;
+        
+      console.log("content =" + JSON.stringify(content)  );
+          
+});
+    
 // Question.showPastQuestion(1, (event) => {
 //     const data = JSON.parse(JSON.stringify(event));
 //     const content = data.content;
