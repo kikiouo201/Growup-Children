@@ -1,6 +1,4 @@
-const Question = require('./model/question');
-const People = require('./model/people');
-
+const api = require('./model/api');
 //ADD
 
 
@@ -42,7 +40,7 @@ const People = require('./model/people');
 
 //SHOW
 
-Question.showQuizContent(1, (event) => {
+api.Question.showQuizContent(1, (event) => {
           const data = JSON.parse(JSON.stringify(event));
           const content = data.content;        
           console.log("showQuizContent =" + JSON.stringify(content)  );       
@@ -56,7 +54,7 @@ Question.showQuizContent(1, (event) => {
     
 // });
 
-People.showChild('2nih42h3nn7k57nbu33', (event) => {
+api.People.showChild('2nih42h3nn7k57nbu33', (event) => {
       const data = JSON.parse(JSON.stringify(event));
       const content = data.content;
         

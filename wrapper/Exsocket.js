@@ -1,13 +1,12 @@
 const WebSocket = require('ws');
-const util = require('util');
-const { join } = require('path');
-const { json } = require('express');
+
+
 
 
 function Exsocket() {
 
-let ws = new WebSocket('ws://localhost:2000');
-//let ws = new WebSocket('ws://growup.mcu.yokikiyo.space');
+//let ws = new WebSocket('ws://localhost:2000');
+let ws = new WebSocket('ws://growup.mcu.yokikiyo.space');
 
 const workQueues= new Map();
 const sendQueues = new Map();
@@ -93,6 +92,7 @@ Exsocket.createRouter = () => {
         json,
          
       );
+      console.log("sendQueues=");
       console.log(sendQueues);
     },
     workQueues,
