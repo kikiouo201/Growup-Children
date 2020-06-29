@@ -1,3 +1,4 @@
+const fs = require('fs');
 const { createRouter } = require('../wrapper/Exsocket');
 const router = createRouter();
 
@@ -20,6 +21,14 @@ const ADD_QUIZ = 'add_quiz';
 const SHOW_QUIZ_CONTENT = 'show_quiz_content';
 const SHOW_QUIZ_RECORD = 'show_quiz_record';
 const ADD_QUIZ_RECORD = 'add_quiz_record';
+
+function base64_encode(file) {
+    // read binary data
+    var bitmap = fs.readFileSync(file);
+    // convert binary data to base64 encoded string
+    return new Buffer(bitmap).toString('base64');
+}
+
 function question(app){
 
     return{
@@ -66,12 +75,18 @@ function question(app){
         },
         
         
-         addQa(child_id, question_text, answer, question_url, category,callback){
+         addQa(child_id, question_text, answer, question_img, category,callback){
+             let question_url=null;
+             if(question_img.match('.jpg') || question_img.match('.png')){
+                question_url = base64_encode(question_img);
+                //question_url = question_url.toString();
+                console.log('url='+question_url);
+             }
             const jsonObject = {
                 child_id: child_id,
                 question_text: question_text, 
                 answer: answer,
-                question_url: question_url ,
+                base64str : question_url ,
                 category: category,
             };
             
