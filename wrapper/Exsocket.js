@@ -14,11 +14,11 @@ const app = {
     use(router) {
 
       router.workQueues.forEach((event, callback) => {
-        if (workQueues.has(event)) throw new Error('Regist duplicate event in this application.');
+       // if (workQueues.has(event)) throw new Error('Regist duplicate event in this application.');
         workQueues.set(event, callback);
       });
       router.sendQueues.forEach((event, json) => {
-        if (sendQueues.has(event)) throw new Error('Regist duplicate event in this application.');
+       // if (sendQueues.has(event)) throw new Error('Regist duplicate event in this application.');
         sendQueues.set(event, json);
       });
     
