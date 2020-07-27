@@ -21,7 +21,7 @@ const app = {
        // if (sendQueues.has(event)) throw new Error('Regist duplicate event in this application.');
         sendQueues.set(event, json);
       });
-    
+      //sendMes();
     },
   };
 
@@ -45,7 +45,8 @@ ws.onmessage = event => {
 
 //關閉後執行的動作，指定一個 function 會在連結中斷後執行
 ws.onclose = () => {
-    console.log('close connection')
+    console.log('close connection');
+   
 }
 
 
@@ -92,8 +93,8 @@ Exsocket.createRouter = () => {
         json,
          
       );
-      console.log("sendQueues=");
-      console.log(sendQueues);
+     // console.log("sendQueues=");
+      //console.log(sendQueues);
     },
     workQueues,
     sendQueues,
