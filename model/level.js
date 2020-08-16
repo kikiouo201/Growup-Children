@@ -8,20 +8,20 @@ function level(app){
    
 
     return {
-         showZhuyinLevel(child_id,callback){
+         showLevel(child_id,callback){
             const jsonObject = {
                child_id: child_id,
             };
-            router.on('show_zhuyin_level',jsonObject,callback);
+            router.on('show_level',jsonObject,callback);
             app.use(router);
         },
-        alterZhuyinLevel(child_id,level_name,ispass,callback){
+        alterLevel(child_id,level_name,callback){
             const jsonObject = {
                child_id: child_id,
                level_name:level_name,
                ispass:1,
             };
-            router.on('alter_zhuyin_level',jsonObject,callback);
+            router.on('alter_level',jsonObject,callback);
             app.use(router);
         }
 
