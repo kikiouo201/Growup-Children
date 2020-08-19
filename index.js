@@ -4,7 +4,7 @@ const api = require('./model/api');
 
 
 
-// Question.addQuiz(5, (event) => {
+// api.Question.addQuiz(5, (event) => {
 //    // console.log("addQuiz=" + JSON.stringify(event));
 //     const data = JSON.parse(JSON.stringify(event));
 //     const contents = data.content;        
@@ -13,40 +13,55 @@ const api = require('./model/api');
 //     });
 //     console.log("contents=" + JSON.stringify(contents));
 //    conten = contents;
-//    Question.addQuizRecord(1,"水果類測驗1",10,3,conten,(event) => {
-//     console.log("addQuizRecord=" + JSON.stringify(event));
-//   });  
+// //    api.Question.addQuizRecord(1,"水果類測驗1",10,3,conten,(event) => {
+// //     console.log("addQuizRecord=" + JSON.stringify(event));
+// //   });  
 // });
+// api.Question.addQuizRecord(1,"水果類測驗1",10,3,conten,(event) => {
+//         console.log("addQuizRecord=" + JSON.stringify(event));
+//       });  
 
 
 
-
-// Question.addQuizRecord(1,"yo",10,3, (event) => {
+// api.Question.addQuizRecord(1,"yo",10,3, (event) => {
 //     console.log("addQuizRecord=" + JSON.stringify(event));
 // });
   
-// Question.addQa(1, "question_text", "answer", "question_url", "知識", (event) => {
+// api.Question.addQa(1, "question_text", "answer", "./still-image1.jpg", "知識", (event) => {
 //     console.log("callback=" + JSON.stringify(event));
 // });
 
-// Question.addBook(1, "水果類", "單詞", (event) => {
+// api.Question.addBook(1, "水果類", "單詞", (event) => {
 //     console.log("callback=" + JSON.stringify(event));
 // });
 
-// Question.addBookContent(5, 16, (event) => {
+// api.Question.addBookContent(5, 100, (event) => {
 //     console.log("callback=" + JSON.stringify(event));
 // });
 
 
 //SHOW
+// api.People.showChildPosition(1,(event) => {
+//     console.log("callback=" + JSON.stringify(event));
+// });
 
-api.Question.showQuizContent(1, (event) => {
-          const data = JSON.parse(JSON.stringify(event));
-          const content = data.content;        
-          console.log("showQuizContent =" + JSON.stringify(content)  );       
-});
+// api.Question.showPictureBook(1,(event) => {
+//             console.log("callback=" + JSON.stringify(event));
+// });
 
-// Question.showQuizRecord(1, (event) => {
+// api.Level.showLevel(1, (event) => {
+//               const data = JSON.parse(JSON.stringify(event));
+//               const content = data.content;        
+//               console.log("showZhuyinLevel =" + JSON.stringify(content)  );       
+//     });
+// api.Question.showQuizContent(1, (event) => {
+//           const data = JSON.parse(JSON.stringify(event));
+//           const content = data.content;        
+//           console.log("showQuizContent =" + JSON.stringify(content)  );       
+// });
+
+
+// api.Question.showQuizRecord(1, (event) => {
 //   const data = JSON.parse(JSON.stringify(event));
 //   const content = data.content;
   
@@ -54,15 +69,15 @@ api.Question.showQuizContent(1, (event) => {
     
 // });
 
-api.People.showChild('2nih42h3nn7k57nbu33', (event) => {
-      const data = JSON.parse(JSON.stringify(event));
-      const content = data.content;
+// api.People.showChild('2nih42h3nn7k57nbu33', (event) => {
+//       const data = JSON.parse(JSON.stringify(event));
+//       const content = data.content;
         
-      console.log("content =" + JSON.stringify(content)  );
+//       console.log("content =" + JSON.stringify(content)  );
           
-});
+// });
     
-// Question.showPastQuestion(1, (event) => {
+// api.Question.showPastQuestion(1, (event) => {
 //     const data = JSON.parse(JSON.stringify(event));
 //     const content = data.content;
 //     content.forEach(element => {
@@ -76,36 +91,42 @@ api.People.showChild('2nih42h3nn7k57nbu33', (event) => {
 //     //  console.log("content =" + JSON.stringify(content)  );
 // });
 
-// Question.showBook(1, (event) => {
+// api.Question.showBook(1, (event) => {
 //     console.log("callback=" + JSON.stringify(event));
 // });
 
-// Question.showBookContent(5, (event) => {
+// api.Question.showBookContent(5, (event) => {
 //     console.log("callback=" + JSON.stringify(event));
-// });
-
+// })
 
 //DELETE
-// Question.deleteBook(6, (event) => {
+// api.Question.deleteBook(6, (event) => {
 //         console.log("callback=" + JSON.stringify(event));
 //     });
 
-// Question.deleteBookContent(16,(event) => {
+// api.Question.deleteBookContent(16,(event) => {
 //     console.log("callback=" + JSON.stringify(event));
 // });
 
-// Question.deletePastQuestion(25, (event) => {
+// api.Question.deletePastQuestion(25, (event) => {
 //     console.log("callback=" + JSON.stringify(event));
 // });
 
 
 //ALTER
-// Question.alterBook(5,"水果類","",(event) => {
+// api.Question.alterBook(5,"水果類","",(event) => {
 //     console.log("callback=" + JSON.stringify(event));
 // });
 
-// Question.alterBookContent(11,2,19,(event) => {
+// api.Question.alterBookContent(11,2,19,(event) => {
 //     console.log("callback=" + JSON.stringify(event));
 // });
 
+// api.Level.alterLevel(1,"ㄍ",(event) => {
+//         console.log("callback=" + JSON.stringify(event));
+//       });
+    
 
+// api.People.alterChildPosition(1,'121.34','24.98',(event) => {
+//             console.log("callback=" + JSON.stringify(event));
+//           });
