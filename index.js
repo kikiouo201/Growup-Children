@@ -41,6 +41,14 @@ const api = require('./model/api');
 
 
 //SHOW
+// api.People.showChildGoodBabyTotalValue(1,(event) => {
+//         console.log("callback=" + JSON.stringify(event));
+// });
+
+api.People.showChildGoodBabyDayValue(1,(event) => {
+    console.log("callback=" + JSON.stringify(event));
+});
+
 // api.People.showChildPosition(1,(event) => {
 //     console.log("callback=" + JSON.stringify(event));
 // });

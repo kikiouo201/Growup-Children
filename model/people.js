@@ -21,7 +21,8 @@ function people(app){
             };
             router.on('show_child_position',jsonObject,callback);
             app.use(router);
-        },  alterChildPosition(child_id,longitude,latitude,callback){
+        },  
+        alterChildPosition(child_id,longitude,latitude,callback){
             const jsonObject = {
                child_id: child_id,
                longitude: longitude,
@@ -29,7 +30,22 @@ function people(app){
             };
             router.on('alter_child_position',jsonObject,callback);
             app.use(router);
-        }
+        },
+        showChildGoodBabyTotalValue(child_id,callback){
+            const jsonObject = {
+                child_id: child_id,
+            };
+            router.on('show_child_good_baby_total_value',jsonObject,callback);
+            app.use(router);
+        },   
+        showChildGoodBabyDayValue(child_id,callback){
+            const jsonObject = {
+                child_id: child_id,
+            };
+        
+            router.on('show_child_good_baby_day_value',jsonObject,callback);
+            app.use(router);
+        },
     };
 }
 
