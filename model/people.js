@@ -46,7 +46,32 @@ function people(app){
             router.on('show_child_good_baby_day_value',jsonObject,callback);
             app.use(router);
         },
+        AddChildGoodBabyValue(child_id,add_value,callback){
+            let today = new Date();
+            const jsonObject = {
+                child_id: child_id,
+                add_value: add_value,
+                date: formatDate(today),
+            };
+        
+            router.on('add_child_good_baby_value',jsonObject,callback);
+            app.use(router);
+        },
     };
+}
+
+function formatDate(date) {
+    var d = new Date(date),
+        month = '' + (d.getMonth() + 1),
+        day = '' + d.getDate(),
+        year = d.getFullYear();
+
+    if (month.length < 2) 
+        month = '0' + month;
+    if (day.length < 2) 
+        day = '0' + day;
+
+    return [year, month, day].join('-');
 }
 
 
