@@ -76,13 +76,18 @@ function question(app){
         
          addQa(child_id, question_text, answer, question_img,book_name,book_img,book_introduction, category,callback){
              let question_url=null;
-             if(question_img.match('.jpg') || question_img.match('.png')){
+             console.log('question_img.substring(0, 4)'+question_img.substring(0, 4));
+             if(question_img.substring(0, 4) == 'http'){
+                question_url = question_img.toString();
+             } else if(question_img.match('.jpg') || question_img.match('.png')){
                 question_url = base64_encode(question_img);
                 //question_url = question_url.toString();
                // console.log('url='+question_url);
              }
              let book_url=null;
-             if(book_img.match('.jpg') || book_img.match('.png')){
+             if(book_img.substring(0, 4) == 'http'){
+                book_url = book_img.toString();
+            } else if(book_img.match('.jpg') || book_img.match('.png')){
                 book_url = base64_encode(book_img);
                 //question_url = question_url.toString();
                // console.log('url='+question_url);
